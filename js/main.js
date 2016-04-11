@@ -651,6 +651,15 @@ function main() {
         stats.domElement.style.display = showFPS.checked ? "block" : "none";
     });
 
+    // Fullscreen
+    function goFullscreen() {
+        viewportFrame.requestFullScreen();
+    }
+    var fullscreenButton = document.getElementById('fullscreenBtn');
+    var mobileFullscreenBtn = document.getElementById("mobileFullscreenBtn");
+    fullscreenButton.addEventListener('click', goFullscreen, false);
+    mobileFullscreenBtn.addEventListener('click', goFullscreen, false);
+
     function EnumerateVRDisplays(displays) {
       if (displays.length > 0) {
         vrDisplay = displays[0];
@@ -659,6 +668,9 @@ function main() {
         vrToggle.style.display = "block";
         var mobileVrBtn = document.getElementById("mobileVrBtn");
         mobileVrBtn.style.display = "block";
+
+        // hide normal fullscreen button to remove confusion for testing
+        mobileFullscreenBtn.style.display = "none";
 
         // Handle VR presentation change
         window.addEventListener("vrdisplaypresentchange", function() {
@@ -687,15 +699,6 @@ function main() {
         }
         onResize();
     }, false);
-
-    // Fullscreen
-    function goFullscreen() {
-        viewportFrame.requestFullScreen();
-    }
-    var fullscreenButton = document.getElementById('fullscreenBtn');
-    var mobileFullscreenBtn = document.getElementById("mobileFullscreenBtn");
-    fullscreenButton.addEventListener('click', goFullscreen, false);
-    mobileFullscreenBtn.addEventListener('click', goFullscreen, false);
 
     // VR
     function presentVR() {
