@@ -9,7 +9,7 @@
         <script type="text/javascript" src="js/util/game-shim.js"></script>
         <script type="text/javascript" src="js/util/gl-matrix-min.2.3.2.js"></script>
         <script type="text/javascript" src="js/util/stats.min.js"></script>
-        <script type="text/javascript" src="js/util/webvr-polyfill.js"></script>
+        <script type="text/javascript" d-src="js/util/webvr-polyfill.js"></script>
 
         <!-- Quake3 Map Specific files -->
         <script type="text/javascript" src="js/main.js"></script>
@@ -32,6 +32,8 @@
                     http://get.webgl.org/
                 </a>
             </canvas>
+            <div id="info-msg">
+            </div>
             <div id="loading">
                 Loading...
             </div>

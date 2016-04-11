@@ -670,7 +670,9 @@ function main() {
         mobileVrBtn.style.display = "block";
 
         // hide normal fullscreen button to remove confusion for testing
-        mobileFullscreenBtn.style.display = "none";
+        if (isVRBrowser()) {
+          mobileFullscreenBtn.style.display = "none";
+        }
 
         // Handle VR presentation change
         window.addEventListener("vrdisplaypresentchange", function() {
@@ -681,6 +683,16 @@ function main() {
 
     if (navigator.getVRDisplays) {
       navigator.getVRDisplays().then(EnumerateVRDisplays);
+    } else {
+      if (isVRBrowser()) {
+        var infoMsg = document.getElementById('info-msg');
+        infoMsg.style.display = 'block';
+        infoMsg.innerHTML =
+          'WebVR mode is not enabled in Samsung Internet.<br>' +
+          'Go to <span class="link">internet://webvr-enable</span> with VR keyboard to enable.';
+        // auto goto page ; nope, can't navigate to
+        //setTimeout(function(){ window.location.href = "internet://webvr-enable"; }, 3000);
+      }
     }
 
     /*var playMusic = document.getElementById("playMusic");
@@ -713,6 +725,14 @@ function main() {
     var mobileVrBtn = document.getElementById("mobileVrBtn");
     vrBtn.addEventListener("click", presentVR, false);
     mobileVrBtn.addEventListener("click", presentVR, false);
+
+    function isVRBrowser() {
+      var UA = window.navigator.userAgent;
+      var isVRBrowser = UA.indexOf('VR') !== -1;
+
+      return isVRBrowser;
+    }
+
 
 }
 window.addEventListener("load", main); // Fire this once the page is loaded up
