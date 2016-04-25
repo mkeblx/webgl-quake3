@@ -714,7 +714,7 @@ function main() {
 
     // VR
     function presentVR() {
-      if (vrDisplay.isPresenting) {
+      if (vrDisplay.isPresenting && !isVRBrowser()) {
         vrDisplay.exitPresent();
       } else {
         xAngle = 0.0;

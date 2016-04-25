@@ -107,7 +107,7 @@ canvas {
     margin: auto;
     top: 200px;
     padding: 10px;
-    border: 2px solid #666;
+    border: 5px solid #666;
     border-radius: 5px;
     width: 200px;
     z-index: 5;
@@ -115,6 +115,7 @@ canvas {
     text-align: center;
     vertical-align: middle;
     pointer-events: none;
+    font-size: 16px;
 }
 
 #info-msg {
@@ -139,8 +140,9 @@ canvas {
 #mobileVrBtn {
     position: absolute;
     bottom: 1em;
-    right: 1em;
-    width: 3em;
+    right: 50%;
+    width: 60px;
+    margin-right: -30px;
 }
 
 #mobileFullscreenBtn {
